@@ -6,11 +6,6 @@ import { Check, CaretDown, CaretUp, X } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
 
-interface TriggerProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {
-  close: boolean | undefined;
-}
-
 const Select = SelectPrimitive.Root;
 
 const SelectGroup = SelectPrimitive.Group;
@@ -19,7 +14,9 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  TriggerProps
+React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+  close: boolean | undefined,
+}
 >(({ className, children, close, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
